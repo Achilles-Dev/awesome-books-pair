@@ -2,54 +2,48 @@ const addButton = document.querySelector('#add-button');
 
 const form = document.querySelector('.input-form');
 const main = document.querySelector('.main');
-let books = JSON.parse(window.localStorage.getItem('booksStored'));
 
-/* Add book to localStorage */
-const addBook = () => {
-  if (books === null) books = [];
-  let title = form.elements.title.value;
-  let author = form.elements.author.value;
-  let book = {
-    title, 
-    author
-  }
-  books.push(book);
-  window.localStorage.setItem('booksStored', JSON.stringify(books));
-  let bookContainer = document.createElement('div');
+// create Book */
+const createBook = (book) => {
+  const bookContainer = document.createElement('div');
   bookContainer.className = 'single-book';
-  let bookTitle = document.createElement('h3');
-  let bookAuthor = document.createElement('h3');
-  let removeButton = document.createElement('button');
+  const bookTitle = document.createElement('h3');
+  bookTitle.className = 'title';
+  const bookAuthor = document.createElement('h3');
+  bookAuthor.className = 'author';
+  const removeButton = document.createElement('button');
   removeButton.className = 'remove-button';
   removeButton.textContent = 'Remove';
-  removeButton.id = books.indexOf(book);
-  bookTitle.textContent = title;
-  bookAuthor.textContent = author;
+  bookTitle.textContent = book.title;
+  bookAuthor.textContent = book.author;
   bookContainer.append(bookTitle, bookAuthor, removeButton);
 
   main.insertBefore(bookContainer, form);
 };
 
+/* Add book to localStorage */
+const addBook = () => {
+  let existingBooks = JSON.parse(window.localStorage.getItem('booksStored'));
+  if (existingBooks === null) existingBooks = [];
+  const title = form.elements.title.value;
+  const author = form.elements.author.value;
+  const book = {
+    title,
+    author,
+  };
+  existingBooks.push(book);
+  window.localStorage.setItem('booksStored', JSON.stringify(existingBooks));
+  createBook(book);
+};
+
 const populateBooks = () => {
+  const books = JSON.parse(window.localStorage.getItem('booksStored'));
   if (localStorage.getItem('booksStored')) {
     books.forEach((book) => {
-      let bookContainer = document.createElement('div');
-      bookContainer.className = 'single-book';
-      let bookTitle = document.createElement('h3');
-      let bookAuthor = document.createElement('h3');
-      let removeButton = document.createElement('button');
-
-      removeButton.className = 'remove-button';
-      removeButton.textContent = 'Remove';
-      removeButton.id = books.indexOf(book);
-      bookTitle.textContent = book.title;
-      bookAuthor.textContent = book.author;
-      bookContainer.append(bookTitle, bookAuthor, removeButton);
-
-      main.insertBefore(bookContainer, form);
-    } )
+      createBook(book);
+    });
   }
-}
+};
 
 window.onload = populateBooks;
 
@@ -59,21 +53,22 @@ addButton.addEventListener('click', () => {
   form.elements.author.value = '';
 });
 
-/*Remove book*/
+/* Remove book */
 
-const removeBook = (bookIndex) => {
-let remainingBooks = books.filter((book, index) => index != bookIndex);
-window.localStorage.setItem('booksStored', JSON.stringify(remainingBooks));
+const removeBook = (button) => {
+  const oldBooks = JSON.parse(window.localStorage.getItem('booksStored'));
+  const parentDiv = button.parentNode;
+  const myTitle = parentDiv.querySelector('.title').textContent;
+  const myAuthor = parentDiv.querySelector('.author').textContent;
+  const booksLeft = oldBooks.filter((book) => book.title !== myTitle && book.author !== myAuthor);
+  window.localStorage.setItem('booksStored', JSON.stringify(booksLeft));
 
-let buttonElement = document.getElementById(bookIndex);
-let parentDiv = buttonElement.parentNode;
-parentDiv.remove();
-}
+  parentDiv.remove();
+};
 
 document.addEventListener('click', (e) => {
-let button = e.target;
-if (button.className === 'remove-button') {
-let buttonId = button.id;
-removeBook(buttonId);
-}
-}); 
+  const button = e.target;
+  if (button.className === 'remove-button') {
+    removeBook(button);
+  }
+});
