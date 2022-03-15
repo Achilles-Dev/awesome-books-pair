@@ -58,3 +58,22 @@ addButton.addEventListener('click', () => {
   form.elements.title.value = '';
   form.elements.author.value = '';
 });
+
+/*Remove book*/
+
+const removeBook = (bookIndex) => {
+let remainingBooks = books.filter((book, index) => index != bookIndex);
+window.localStorage.setItem('booksStored', JSON.stringify(remainingBooks));
+
+let buttonElement = document.getElementById(bookIndex);
+let parentDiv = buttonElement.parentNode;
+parentDiv.remove();
+}
+
+document.addEventListener('click', (e) => {
+let button = e.target;
+if (button.className === 'remove-button') {
+let buttonId = button.id;
+removeBook(buttonId);
+}
+}); 
