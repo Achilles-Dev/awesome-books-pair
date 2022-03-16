@@ -1,12 +1,16 @@
 const addButton = document.querySelector('#add-button');
 
 const form = document.querySelector('.input-form');
-const main = document.querySelector('.main');
+const booksContainer = document.querySelector('.books-container');
 
 // create Book */
 const createBook = (book) => {
   const bookContainer = document.createElement('div');
   bookContainer.className = 'single-book';
+  const authorContainer = document.createElement('div');
+  authorContainer.className='author-name'
+  const span =document.createElement('span');
+  span.textContent= 'by';
   const bookTitle = document.createElement('h3');
   bookTitle.className = 'title';
   const bookAuthor = document.createElement('h3');
@@ -16,9 +20,10 @@ const createBook = (book) => {
   removeButton.textContent = 'Remove';
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
-  bookContainer.append(bookTitle, bookAuthor, removeButton);
+  authorContainer.append(bookTitle, span, bookAuthor);
+  bookContainer.append(authorContainer, removeButton);
 
-  main.insertBefore(bookContainer, form);
+ booksContainer.appendChild(bookContainer)
 };
 
 /* Add book to localStorage */
