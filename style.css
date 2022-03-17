@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 50%;
 }
 
 #add-button {
@@ -39,19 +40,21 @@ main {
   padding: 10px;
 }
 
-.single-book:nth-child(odd) {
-  background: rgb(189, 183, 183);
-  } 
-
 .single-book {
   display: flex;
   justify-content: space-between;
   padding: 5px;
 }
 
+.single-book:nth-child(odd) {
+  background: rgb(189, 183, 183);
+}
+
 .author-name {
   display: flex;
   gap: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottom-contaniner {
@@ -63,12 +66,12 @@ main {
 
 .input-form input {
   border: 1px solid black;
+  height: 20px;
 }
 
 .input-form button {
   display: flex;
   align-self: flex-end;
-
 }
 
 .top-container h1 {
