@@ -1,5 +1,7 @@
 /* eslint-disable max-classes-per-file */
 
+import luxon from './luxon.js';
+
 const form = document.querySelector('.input-form');
 
 class Book {
@@ -92,12 +94,11 @@ const addBookSection = document.querySelector('.bottom-container');
 const contactSection = document.querySelector('.contact');
 const displayBookSection = document.querySelector('.top-container');
 
-//Date
+// Date
 const date = document.querySelector('.date');
-let dateTime = luxon.DateTime.utc().toLocaleString(luxon.DateTime.DATETIME_FULL);
+const dateTime = luxon.DateTime.utc().toLocaleString(luxon.DateTime.DATETIME_FULL);
 date.textContent = dateTime;
 
-console.log(dateTime);
 // Display Books
 document.addEventListener('DOMContentLoaded', () => {
   mainPage.populateBooks();
