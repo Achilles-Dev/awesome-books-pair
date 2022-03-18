@@ -10,37 +10,48 @@
 <body>
   <header class="navigation">
     <nav class="navbar">
-        <img src="logo.png" alt="logo" class="logo">
-        <ul class="nav-list">
-            <li id="list" class="nav-link"><a href="#">List</a></li>
-            <li id="add" class="nav-link"><a  href="#">Add new</a></li>
-            <li id="contact" class="nav-link"><a href="#">Contact</a></li>
-        </ul>
+      <img src="logo.png" alt="logo" class="logo">
+      <ul class="nav-list">
+          <li id="list" class="nav-link"><a href="#">List</a></li>
+          <li id="add" class="nav-link"><a href="#">Add new</a></li>
+          <li id="contact" class="nav-link"><a href="#">Contact</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
+
   <main class="main">
     <section class="top-container">
-    <h1>All Awesome Books</h1>
-    <div class="books-container">
-    
-    </div>
-    
+      <h1>All Awesome Books</h1>
+      <div class="books-container">    
+      </div>
     </section>
-    <section class="bottom-contaniner">
-    <h1>Add a Book</h1>
-    <form action="#" method="Post" class="input-form">
-    <input type="text" name="title" placeholder="Title">
-    <input type="text" name="author" placeholder="Author">
-    <button type="button" id="add-button">Add</button>
-    </form>
+    <section class="bottom-container">
+      <h1>Add a Book</h1>
+      <form action="#" method="Post" class="input-form">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="author" placeholder="Author">
+        <button type="button" id="add-button">Add</button>
+      </form>
     </section>
-    </main>
-
-    <footer id="footer" class="copyright">
-      <img src="logo.png" alt="logo">
-      <p class="cc"> 2022 Awesome Books <br> All rights reserved </p>
+    <section class="contact">
+      <h2>Contact information</h2>
+      <div class="contact-container">
+        <p>
+          Do have any question or you just want to say "Hello"? <br />
+          You can reach out to us
+        </p>
+        <ul>
+          <li>Our e-mail: mail@mail.com</li>
+          <li>Our phone number: 0044586534422</li>
+          <li>Our address: Streetname 22, 84503 city, country</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="copyright">
+    <img src="./logo.png" alt="logo">
+    <p class="cc"> 2022 Awesome Books <br> All rights reserved </p>
   </footer>
-
   <script src="./main.js"></script>
 </body>
 </html>

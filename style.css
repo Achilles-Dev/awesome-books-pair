@@ -38,16 +38,17 @@ main {
   flex-direction: column;
   border: 2px solid black;
   padding: 10px;
+  font-weight: 700;
 }
-
-.single-book:nth-child(odd) {
-  background: #bdb7b7;
-  } 
 
 .single-book {
   display: flex;
   justify-content: space-between;
   padding: 5px;
+}
+
+.single-book:nth-child(odd) {
+  background: #bdb7b7;
 }
 
 .author-name {
@@ -57,7 +58,7 @@ main {
   align-items: center;
 }
 
-.bottom-contaniner {
+.bottom-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +66,8 @@ main {
 }
 
 .input-form input {
-  border: 1px solid black;
+  border: 2px solid black;
+  height: 20px;
 }
 
 .input-form button {
@@ -124,8 +126,7 @@ main {
 
 .nav-link {
   border-right: 1px solid #000;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 0 10px;
 }
 
 .nav-link a {
@@ -142,10 +143,10 @@ main {
   justify-content: space-between;
   display: flex;
   width: 92%;
-  margin: 4%;
+  margin: 2% 4%;
   border: 2.5px solid #000;
   position: absolute;
-  top: 81.5%;
+  bottom: 0;
   box-shadow: 3px 3px #000;
 }
 

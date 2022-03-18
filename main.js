@@ -85,10 +85,13 @@ class MainUI {
   }
 }
 
-// Display Books
 const mainPage = new MainUI();
 const store = new Store();
-document.addEventListener('DOMContentLoaded', mainPage.populateBooks());
+
+// Display Books
+document.addEventListener('DOMContentLoaded', () => {
+  mainPage.populateBooks();
+});
 
 // Add Book
 const addButton = document.querySelector('#add-button');
