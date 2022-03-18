@@ -88,9 +88,14 @@ class MainUI {
 const mainPage = new MainUI();
 const store = new Store();
 
+const addBookSection = document.querySelector('.bottom-container');
+const contactSection = document.querySelector('.contact');
+const displayBookSection = document.querySelector('.top-container');
 // Display Books
 document.addEventListener('DOMContentLoaded', () => {
   mainPage.populateBooks();
+  contactSection.style.display = 'none';
+  addBookSection.style.display = 'none';
 });
 
 // Add Book
@@ -112,5 +117,17 @@ document.addEventListener('click', (e) => {
   if (button.className === 'remove-button') {
     mainPage.removeBook(button);
     store.removeBook(button);
+  } else if (button.parentNode.id === 'list') {
+    displayBookSection.style.display = 'flex';
+    contactSection.style.display = 'none';
+    addBookSection.style.display = 'none';
+  } else if (button.parentNode.id === 'add') {
+    addBookSection.style.display = 'flex';
+    contactSection.style.display = 'none';
+    displayBookSection.style.display = 'none';
+  } else if (button.parentNode.id === 'contact') {
+    addBookSection.style.display = 'none';
+    contactSection.style.display = 'flex';
+    displayBookSection.style.display = 'none';
   }
 });
