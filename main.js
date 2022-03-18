@@ -91,6 +91,13 @@ const store = new Store();
 const addBookSection = document.querySelector('.bottom-container');
 const contactSection = document.querySelector('.contact');
 const displayBookSection = document.querySelector('.top-container');
+
+//Date
+const date = document.querySelector('.date');
+let dateTime = luxon.DateTime.utc().toLocaleString(luxon.DateTime.DATETIME_FULL);
+date.textContent = dateTime;
+
+console.log(dateTime);
 // Display Books
 document.addEventListener('DOMContentLoaded', () => {
   mainPage.populateBooks();
