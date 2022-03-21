@@ -1,44 +1,8 @@
-/* eslint-disable max-classes-per-file */
-
-import luxon from './luxon.js';
+import luxon from './modules/luxon.js';
+import Book from './modules/book.js';
+import Store from './modules/store.js';
 
 const form = document.querySelector('.input-form');
-
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-}
-
-class Store {
-  getBooks = () => {
-    let books;
-    if (localStorage.getItem('booksStored') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(window.localStorage.getItem('booksStored'));
-    }
-    return books;
-  }
-
-  addBook = (book) => {
-    const books = this.getBooks();
-
-    books.push(book);
-    window.localStorage.setItem('booksStored', JSON.stringify(books));
-  }
-
-  removeBook = (button) => {
-    const books = this.getBooks();
-    const parentDiv = button.parentNode;
-    const myTitle = parentDiv.querySelector('.title').textContent;
-    const myAuthor = parentDiv.querySelector('.author').textContent;
-    const booksLeft = books.filter((book) => book.title !== myTitle && book.author !== myAuthor);
-
-    window.localStorage.setItem('booksStored', JSON.stringify(booksLeft));
-  }
-}
 
 class MainUI {
   populateBooks = () => {
