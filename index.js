@@ -2,6 +2,8 @@ import luxon from './modules/luxon.js';
 import Book from './modules/book.js';
 import Store from './modules/store.js';
 
+const form = document.querySelector('.input-form');
+
 class MainUI {
   populateBooks = () => {
     const store = new Store();
@@ -76,7 +78,7 @@ addButton.addEventListener('click', () => {
   const newBook = new Book(title, author);
 
   mainPage.addBook(newBook);
-  addBook(newBook);
+  store.addBook(newBook);
   mainPage.clearInputs();
 });
 
